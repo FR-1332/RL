@@ -7,6 +7,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+gym = "^0.26.2"
+wheel = "^0.43.0"
+torch = "^2.2.2"
+pydantic = "^2.7.0"
 
 
 [build-system]

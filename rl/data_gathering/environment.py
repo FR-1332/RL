@@ -1,19 +1,11 @@
-from typing import Any
-
 import gym
-from gym import Env, Space
-from pydantic import BaseModel
+from gym import Env
 
 
-class Environment(BaseModel):
+class Environment:
     env: Env
-    action_space: Space
 
     is_alive: bool
-
-    def __init__(self, /, **data: Any):
-        super().__init__(**data)
-        raise NotImplementedError
 
     def do_action(self, action: int):
         pass
@@ -21,18 +13,21 @@ class Environment(BaseModel):
     def get_env(self):
         pass
 
+    def get_action_space(self):
+        pass
+
     def reset(self):
         pass
 
 
 class Gym(Environment):
-    def __init__(self, /, **data: Any):
-        super().__init__(**data)
+    def __init__(self):
+        super().__init__()
         self.env = gym.make("CartPole-v1")
 
     def do_action(self, action: int):
-        observation, reward, terminated, truncated, info = self.env.step(action)
-        self.is_alive = ((not terminated) & (not truncated))
+        observation, reward, terminated, truncated, _info = self.env.step(action)
+        self.is_alive = (not terminated) & (not truncated)
         return observation, reward
 
     def get_env(self):
@@ -42,5 +37,6 @@ class Gym(Environment):
         return self.env.action_space
 
     def reset(self):
-        initial_state, info = self.env.reset()
+        initial_state, _info = self.env.reset()
+        self.is_alive = True
         return initial_state

@@ -2,33 +2,24 @@
 The data gatherer.
 """
 
-from typing import Any
-
-from pydantic import BaseModel
-
-from agent import Agent, Uniform
-from environment import Environment, Gym
-from rl.data_store.data_store import DataStore, Record
+from rl.data_gathering.agent import Agent
+from rl.data_gathering.environment import Environment
+from rl.data_store.data_store import Record
 
 
-class DataGatherer(BaseModel):
+class DataGatherer:
     """
     Implementation.
     """
     environment: Environment
     agent: Agent
-    data_store: DataStore
 
-    def __init__(self, /, **data: Any):
-        super().__init__(**data)
-        self.environment = Gym()
-        self.agent = Uniform(self.environment.action_space)
+    def __init__(self, environment_class, agent_class):
+        super().__init__()
+        self.environment = environment_class()
+        self.agent = agent_class(self.environment)
 
     def gather_one_history(self):
-        """
-        Gathers one history and stores it in the data_store.
-        :return:
-        """
         history = []
         observation = self.environment.reset()
         while self.environment.is_alive:
@@ -37,12 +28,4 @@ class DataGatherer(BaseModel):
             reaction = Record(observation, action, reward)
             history.append(reaction)
             observation = resulting_observation
-        self.data_store.store(tuple(history))
-
-    def gather(self):
-        """
-        Gathers without end.
-        :return:
-        """
-        while True:
-            self.gather_one_history()
+        return tuple(history)

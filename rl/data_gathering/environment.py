@@ -1,10 +1,12 @@
 import gym
 from gym import Env
+from pydantic import BaseModel, ConfigDict
 
 
-class Environment:
+class Environment(BaseModel):
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
     env: Env
-
     is_alive: bool
 
     def do_action(self, action: int):

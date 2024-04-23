@@ -1,8 +1,11 @@
 from gym import Space
 from gym.spaces.space import T_cov
+from pydantic import BaseModel, ConfigDict
 
 
-class Agent:
+class Agent(BaseModel):
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
     action_space: Space
 
     def __init__(self, action_space: Space):

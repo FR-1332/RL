@@ -2,20 +2,11 @@
 The data store.
 """
 
-from dataclasses import dataclass
-from typing import Any, List
+from typing import List
 
 from pydantic import BaseModel
 
-
-@dataclass
-class Record(BaseModel):
-    """
-    Basic form of the RL data.
-    """
-    observation: Any
-    action: int
-    reward: float
+from rl.data_gathering.types import Record
 
 
 class DataStore(BaseModel):
@@ -23,7 +14,7 @@ class DataStore(BaseModel):
     Interface
     """
 
-    def store(self, history: tuple[Record, ...]):
+    def save(self, history: tuple[Record, ...]):
         """
         Stores the
         :param history:
@@ -37,5 +28,8 @@ class ListBased(DataStore):
     """
     histories: List = []
 
-    def store(self, history: tuple[Record, ...]):
+    def save(self, history: tuple[Record, ...]):
         self.histories.append(history)
+        
+    def save_multiple(self, histories: List[tuple[Record, ...]]):
+        self.histories.extend(__iterable=histories)

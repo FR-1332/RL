@@ -9,6 +9,6 @@ from rl.data_store.data_store import ListBased
 if __name__ == '__main__':
     store = ListBased()
     gatherer = DataGatherer(Gym, Uniform)
-    with concurrent.futures.ProcessPoolExecutor() as executor:
+    with concurrent.futures.ThreadPoolExecutor() as executor:
         for history in executor.map(gatherer.gather_one_history, count()):
             store.store(history)

@@ -1,14 +1,20 @@
-from typing import Any
+from typing import Any, List
 
-from pydantic import BaseModel
 from pydantic.dataclasses import dataclass
 
 
 @dataclass
-class Record(BaseModel):
-    """
-    Basic form of the RL data.
-    """
-    observation: Any
-    action: int
-    reward: float
+class State:
+    state: Any
+    accumulated_reward: float
+
+
+@dataclass
+class Transition:
+    from_state: State
+    actions: List[int]
+    rewards: List[float]
+    to_state: State
+
+
+History = List[Transition]

@@ -1,8 +1,14 @@
-from rl.data_gathering import agent, environment, data_gatherer, data_store
+from concurrent.futures import ThreadPoolExecutor
+
+from rl.data_gathering.history_gatherer import get_histories_in_parallel
+from rl.data_gathering.history_store import HistoryStore
+
+executor = ThreadPoolExecutor()
+history_store = HistoryStore()
 
 if __name__ == "__main__":
-    store = data_store.ListBased()
-    gatherer = data_gatherer.DataGatherer(environment_class=environment.Gym, agent_class=agent.Uniform)
-    while True:
-        history = gatherer.get_histories_in_parallel(amount=128)
-        store.save(history=history)
+    with executor as executor:
+        for i in range(10):
+            history_store.save_multiple(histories=get_histories_in_parallel(executor, amount=10))
+
+    print("finished")

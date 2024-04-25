@@ -23,6 +23,25 @@ files = [
 ]
 
 [[package]]
+name = "astypes"
+version = "0.2.6"
+description = "Infer types for AST nodes."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "astypes-0.2.6-py3-none-any.whl", hash = "sha256:4274e83a80c616f400d05678f9b8bc8143a94e544bbfa02906cc5805d990bf13"},
+    {file = "astypes-0.2.6.tar.gz", hash = "sha256:7bfb49dc207890587cd3d1b2fe57c61aa378fb0603a3590ab5e1c1c78b24e387"},
+]
+
+[package.dependencies]
+astroid = "*"
+typeshed_client = "*"
+
+[package.extras]
+lint = ["flake8", "isort", "mypy", "types-protobuf", "unify"]
+test = ["pytest", "pytest-cov"]
+
+[[package]]
 name = "cloudpickle"
 version = "3.0.0"
 description = "Pickler class to extend the standard pickle.Pickler functionality"
@@ -147,6 +166,41 @@ files = [
     {file = "gym-notices-0.0.8.tar.gz", hash = "sha256:ad25e200487cafa369728625fe064e88ada1346618526102659b4640f2b4b911"},
     {file = "gym_notices-0.0.8-py3-none-any.whl", hash = "sha256:e5f82e00823a166747b4c2a07de63b6560b1acb880638547e0cabf825a01e463"},
 ]
+
+[[package]]
+name = "importlib-resources"
+version = "6.4.0"
+description = "Read resources from Python packages"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "importlib_resources-6.4.0-py3-none-any.whl", hash = "sha256:50d10f043df931902d4194ea07ec57960f66a80449ff867bfe782b4c486ba78c"},
+    {file = "importlib_resources-6.4.0.tar.gz", hash = "sha256:cdb2b453b8046ca4e3798eb1d84f3cce1446a0e8e7b5ef4efb600f19fc398145"},
+]
+
+[package.extras]
+docs = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "sphinx (<7.2.5)", "sphinx (>=3.5)", "sphinx-lint"]
+testing = ["jaraco.test (>=5.4)", "pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-mypy", "pytest-ruff (>=0.2.1)", "zipp (>=3.17)"]
+
+[[package]]
+name = "infer-types"
+version = "1.0.0"
+description = "CLI tool to automatically annotate Python code."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "infer_types-1.0.0-py3-none-any.whl", hash = "sha256:98ac8ff060061d56736e13238945b835c5c90eef7fc17f42adf9dded26b94f29"},
+    {file = "infer_types-1.0.0.tar.gz", hash = "sha256:a7d09a87431bccf73c30983b7918803bf4fe066df053aecf35ab293aad9a0c2b"},
+]
+
+[package.dependencies]
+astroid = "*"
+astypes = ">=0.2.3"
+typeshed_client = "*"
+
+[package.extras]
+lint = ["flake8", "isort", "mypy", "types-protobuf", "unify"]
+test = ["pytest", "pytest-cov"]
 
 [[package]]
 name = "isort"
@@ -656,6 +710,22 @@ files = [
 ]
 
 [[package]]
+name = "setuptools"
+version = "69.5.1"
+description = "Easily download, build, install, upgrade, and uninstall Python packages"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "setuptools-69.5.1-py3-none-any.whl", hash = "sha256:c636ac361bc47580504644275c9ad802c50415c7522212252c033bd15f301f32"},
+    {file = "setuptools-69.5.1.tar.gz", hash = "sha256:6c1fccdac05a97e598fb0ae3bbed5904ccb317337a51139dcd51453611bbb987"},
+]
+
+[package.extras]
+docs = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (>=1,<2)", "sphinx-reredirects", "sphinxcontrib-towncrier"]
+testing = ["build[virtualenv]", "filelock (>=3.4.0)", "importlib-metadata", "ini2toml[lite] (>=0.9)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "mypy (==1.9)", "packaging (>=23.2)", "pip (>=19.1)", "pytest (>=6,!=8.1.1)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-home (>=0.5)", "pytest-mypy", "pytest-perf", "pytest-ruff (>=0.2.1)", "pytest-timeout", "pytest-xdist (>=3)", "tomli", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel"]
+testing-integration = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "packaging (>=23.2)", "pytest", "pytest-enabler", "pytest-xdist", "tomli", "virtualenv (>=13.0.0)", "wheel"]
+
+[[package]]
 name = "sympy"
 version = "1.12"
 description = "Computer algebra system (CAS) in Python"
@@ -738,6 +808,21 @@ opt-einsum = ["opt-einsum (>=3.3)"]
 optree = ["optree (>=0.9.1)"]
 
 [[package]]
+name = "typeshed-client"
+version = "2.5.1"
+description = "A library for accessing stubs in typeshed."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "typeshed_client-2.5.1-py3-none-any.whl", hash = "sha256:8cc254766b38f949effd3c9d4e0934d706d787127d7aedcabc648e4f094f7292"},
+    {file = "typeshed_client-2.5.1.tar.gz", hash = "sha256:6f1127f4853d216d5bfbb77260bb25e760fe00fcc67204a891be6c23471cd221"},
+]
+
+[package.dependencies]
+importlib-resources = ">=1.4.0"
+typing-extensions = ">=4.5.0"
+
+[[package]]
 name = "typing-extensions"
 version = "4.11.0"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -765,4 +850,4 @@ test = ["pytest (>=6.0.0)", "setuptools (>=65)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "b7003f9d4baa444aed46c6e9146d24d4e3695ae42dedd28ce984dd5ded903b85"
+content-hash = "8007a8c59b354c8a61c65a46e18a6518c0ab735f594d3ae18f0202038d4accbe"

@@ -3,22 +3,15 @@ from gym.spaces.space import T_cov
 from pydantic import BaseModel, ConfigDict
 
 
-class Agent(BaseModel):
+class Uniform(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
-
     action_space: Space
 
-    def __init__(self, action_space: Space):
-        super().__init__()
-        self.action_space = action_space
-
-    def select_action(self, observation):
-        pass
-
-
-class Uniform(Agent):
-    def __init__(self, environment):
-        super().__init__(environment.get_action_space())
-
-    def select_action(self, observation) -> T_cov:
+    def get_uniform_sample_action(self, state) -> T_cov:
         return self.action_space.sample()
+
+
+class Agent(Uniform):
+
+    def select_action(self, state):
+        return self.get_uniform_sample_action(state=state)

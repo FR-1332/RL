@@ -1,44 +1,30 @@
 import gym
-from gym import Env
-from pydantic import BaseModel, ConfigDict
+from gym.core import ObsType
+from pydantic import ConfigDict
 
 
-class Environment(BaseModel):
+class OpenAIGym:
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
-    env: Env
-    is_alive: bool
-
-    def do_action(self, action: int):
-        pass
-
-    def get_env(self):
-        pass
-
-    def get_action_space(self):
-        pass
-
-    def reset(self):
-        pass
-
-
-class Gym(Environment):
     def __init__(self):
-        super().__init__()
-        self.env = gym.make("CartPole-v1")
+        self.environment = gym.make("CartPole-v1")
+        self.is_terminal = False
+        self.info: dict = {}
 
-    def do_action(self, action: int):
-        observation, reward, terminated, truncated, _info = self.env.step(action)
-        self.is_alive = (not terminated) & (not truncated)
-        return observation, reward
+    def sample_initial(self) -> ObsType:
+        state, info = self.environment.reset()
+        self.is_terminal = False
+        return state
 
-    def get_env(self):
-        return self.env
+    def sample_next(self, action) -> [ObsType, float]:
+        try:
+            assert not self.is_terminal
+        except:
+            pass
+        state, reward, is_terminated, is_truncated, self.info = self.environment.step(action=action)
+        self.is_terminal = is_terminated or is_truncated
+        return state, reward
 
-    def get_action_space(self):
-        return self.env.action_space
 
-    def reset(self):
-        initial_state, _info = self.env.reset()
-        self.is_alive = True
-        return initial_state
+class Environment(OpenAIGym):
+    pass

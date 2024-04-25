@@ -1,4 +1,5 @@
 from concurrent.futures import Executor
+from math import sqrt
 from threading import Lock
 from typing import List
 
@@ -8,8 +9,10 @@ from rl.data_gathering.types import State, Transition, History
 
 
 def get_histories_in_parallel(executor: Executor, amount: int) -> List[History]:
-    gatherers = [HistoryGatherer() for i in range(amount)]
-    futures = [executor.submit(lambda: gatherer.get_histories_sequentially(amount=amount)) for gatherer in gatherers]
+    rounded_sqrt = round(sqrt(amount))
+    gatherers = [HistoryGatherer() for i in range(rounded_sqrt)]
+    futures = [executor.submit(lambda: gatherer.get_histories_sequentially(amount=rounded_sqrt)) for gatherer in
+               gatherers]
     histories = []
     for future in futures:
         histories.extend(future.result())

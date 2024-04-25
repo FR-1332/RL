@@ -8,6 +8,6 @@ history_store = HistoryStore()
 
 if __name__ == "__main__":
     with executor as executor:
-        history_store.save_multiple(histories=get_histories_in_parallel(executor, amount=100))
+        history_store.save_multiple(histories=get_histories_in_parallel(executor, amount=1000))
 
     print("finished")

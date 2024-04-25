@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "rl"
+name = "data-base"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
@@ -7,14 +7,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-gym = "^0.26.2"
-wheel = "^0.43.0"
-torch = "^2.2.2"
-pydantic = "^2.7.0"
-pylint = "^3.1.0"
-ruff = "^0.4.1"
-infer-types = "^1.0.0"
-setuptools = "^69.5.1"
+fastapi = "^0.110.2"
+uvicorn = "^0.29.0"
 
 
 [build-system]

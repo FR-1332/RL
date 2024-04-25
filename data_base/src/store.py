@@ -1,18 +1,15 @@
-"""
-The data store.
-"""
 import random
 from fractions import Fraction
 from typing import List, Iterable
 
-from rl.data_gathering.types import History
+from model import History
 
 
 class ListBased:
     def __init__(self):
         self.histories: List[History] = []
 
-    def save(self, history: History) -> None:
+    def save_one_history(self, history: History) -> None:
         self.histories.append(history)
 
     def save_multiple(self, histories: Iterable[History]) -> None:

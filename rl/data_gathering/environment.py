@@ -12,15 +12,12 @@ class OpenAIGym:
         self.info: dict = {}
 
     def sample_initial(self) -> ObsType:
-        state, info = self.environment.reset()
+        state, self.info = self.environment.reset()
         self.is_terminal = False
         return state
 
     def sample_next(self, action) -> [ObsType, float]:
-        try:
-            assert not self.is_terminal
-        except:
-            pass
+        assert not self.is_terminal
         state, reward, is_terminated, is_truncated, self.info = self.environment.step(action=action)
         self.is_terminal = is_terminated or is_truncated
         return state, reward

@@ -5,25 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce60e388-b7a8-4127-977f-ea0bcb4eafe7" name="Changes" comment="cleaned up">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_gathering/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_gathering/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_gathering/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_gathering/poetry.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_gathering/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_gathering/src/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_gathering/src/web.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/RL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RL.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_base/src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_base/src/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_base/src/web.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_base/src/web.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_gathering/src/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/src/agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_gathering/src/history_gatherer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/data_gathering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/.idea/domain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/.idea/data_gathering.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_gathering/data_gathering.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/data_gathering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_gathering/src/web.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/src/web.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +57,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Python.data_base (1).executor": "Run",
     "Python.data_base.executor": "Debug",
-    "Python.data_gathering.executor": "Debug",
+    "Python.data_gathering.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -250,13 +234,8 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/data_gathering/data_gathering.py</url>
-          <line>28</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/data_gathering/src/web.py</url>
-          <line>11</line>
+          <line>8</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

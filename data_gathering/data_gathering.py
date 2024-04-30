@@ -1,6 +1,8 @@
 import asyncio
 from concurrent.futures import ProcessPoolExecutor
 
+import httpx
+
 import web
 from agent import Agent
 from environment import Environment
@@ -24,14 +26,19 @@ def get_one_history(agent: Agent, environment: Environment) -> History:
 def farm_and_save_loop():
     environment = Environment()
     agent = Agent(action_space=environment.environment.action_space)
-    responses = []
-    while True:
-        responses.append(farm_and_save(agent, environment))
+    asyncio.run(run_loop(agent, environment))
 
 
-def farm_and_save(agent, environment):
+async def run_loop(agent, environment):
+    async with httpx.AsyncClient() as client:
+        responses = []
+        while True:
+            responses.append(await farm_and_save(agent, environment, client))
+
+
+async def farm_and_save(agent, environment, client):
     history = get_one_history(agent=agent, environment=environment)
-    return asyncio.run(web.save_one_history(history=history))
+    await web.save_one_history(history=history, client=client)
 
 
 if __name__ == "__main__":

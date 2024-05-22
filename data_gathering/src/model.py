@@ -1,19 +1,24 @@
-from typing import List
-
+from gym.core import ObsType, ActType
+from gym.spaces.space import T_cov, Space
 from pydantic import BaseModel
 
+State = tuple[float] | ObsType
+Action = T_cov
+ActionSpace = Space[ActType]
+Reward = float
 
-class State(BaseModel):
-    state: List[float]
-    accumulated_reward: float
 
+class Rewards(BaseModel):
+    accumulated: list[Reward] = []
+    last: list[Reward] = []
 
-class Transition(BaseModel):
-    from_state: State
-    actions: List[int]
-    rewards: List[float]
-    to_state: State
+    def perceive(self, reward: Reward):
+        self.last.append(reward)
+        self.accumulated.append(self.accumulated[-1] + reward if self.accumulated[-1] is not None else reward)
 
 
 class History(BaseModel):
-    transitions: List[Transition]
+    states: list[State] = []
+    actions: list[Action] = []
+    is_terminal: list[bool] = []
+    rewards = Rewards()

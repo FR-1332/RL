@@ -1,27 +1,37 @@
+from typing import Any, Callable
+
 import gym
-from gym.core import ObsType
-from pydantic import ConfigDict
+
+from model import State, ActionSpace, Reward, Action
 
 
-class OpenAIGym:
-    model_config = ConfigDict(arbitrary_types_allowed=True)
+class Environment:
+    sample_initial: Callable[[], State]
+    sample_next: Callable[[Action], (Reward, State)]
+    get_action_space: Callable[[], ActionSpace]
 
-    def __init__(self):
-        self.environment = gym.make("CartPole-v1")
+    is_terminal: bool
+
+
+class OpenAIGym(Environment):
+
+    def __init__(self, /, **data: Any):
+        super().__init__(**data)
+        self._gym = gym.make("CartPole-v1")
+        self._info: dict = {}
+
         self.is_terminal = False
-        self.info: dict = {}
 
-    def sample_initial(self) -> ObsType:
-        state, self.info = self.environment.reset()
+    def sample_initial(self) -> State:
+        state, self._info = self._gym.reset()
         self.is_terminal = False
         return state
 
-    def sample_next(self, action) -> [ObsType, float]:
+    def sample_next(self, action) -> (Reward, State):
         assert not self.is_terminal
-        state, reward, is_terminated, is_truncated, self.info = self.environment.step(action=action)
+        state, reward, is_terminated, is_truncated, self._info = self._gym.step(action=action)
         self.is_terminal = is_terminated or is_truncated
-        return state, reward
+        return reward, state
 
-
-class Environment(OpenAIGym):
-    pass
+    def get_action_space(self) -> ActionSpace:
+        return self._gym.action_space

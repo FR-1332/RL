@@ -1,16 +1,16 @@
 from fastapi import FastAPI, Body
 
 from model import History
-from store import HistoryStore
+from store import ListBased, HistoryStore
 
 api = FastAPI()
-history_store = HistoryStore()
+history_store: HistoryStore = ListBased()
 
 
 @api.post("/api/save_one_history/")
 def save_one_history(json=Body(...)):
     history = History.model_validate_json(json)
-    history_store.save_one_history(history=history)
+    history_store.save_one(history)
 
 
 @api.get("/api/get_one_history")

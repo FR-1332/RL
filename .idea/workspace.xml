@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce60e388-b7a8-4127-977f-ea0bcb4eafe7" name="Changes" comment="cleaned up">
-      <change afterPath="$PROJECT_DIR$/data_gathering/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_gathering/src/agent/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_gathering/src/agent/algo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ce60e388-b7a8-4127-977f-ea0bcb4eafe7" name="Changes" comment="pretty big refactor: interfaces define function types as Callables now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_base/data_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_base/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_base/src/store.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_base/src/store.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_base/src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_base/src/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_base/src/web.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_base/src/web.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_gathering/.idea/data_gathering.iml" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/.idea/data_gathering.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_gathering/data_gathering.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_gathering/src/agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_gathering/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_gathering/src/agent/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/src/agent/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_gathering/src/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/src/environment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_gathering/src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gathering/src/model.py" afterDir="false" />
     </list>
@@ -65,37 +59,84 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python.data_base (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.data_base.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.data_gathering.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/fabir/PycharmProjects/RL/data_gathering/src&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.data_base (1).executor": "Run",
+    "Python.data_base.executor": "Debug",
+    "Python.data_gathering.executor": "Run",
+    "Python.main (1).executor": "Debug",
+    "Python.main (2).executor": "Debug",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/fabir/PycharmProjects/RL/RL/data_base/src",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\fabir\PycharmProjects\RL\RL\data_base\src" />
       <recent name="C:\Users\fabir\PycharmProjects\RL\data_gathering\src" />
       <recent name="C:\Users\fabir\PycharmProjects\RL\data_base\src\model" />
       <recent name="C:\Users\fabir\PycharmProjects\RL\data_base" />
       <recent name="C:\Users\fabir\PycharmProjects\RL\data_gathering" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\fabir\PycharmProjects\RL\RL\model" />
       <recent name="C:\Users\fabir\PycharmProjects\RL\data_gathering\src" />
       <recent name="C:\Users\fabir\PycharmProjects\RL\data_gathering" />
       <recent name="C:\Users\fabir\PycharmProjects\RL\data_base" />
       <recent name="C:\Users\fabir\PycharmProjects\RL\data_base\src" />
-      <recent name="C:\Users\fabir\PycharmProjects\RL\domain" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main (2)">
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="data_base" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data_base" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_base/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="data_gathering" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data_gathering" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_gathering/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="data_base" />
       <option name="ENV_FILES" value="" />
@@ -142,6 +183,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main (2)" />
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.main" />
       </list>
@@ -219,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714012196975</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="pretty big refactor: interfaces define function types as Callables now">
+      <option name="closed" value="true" />
+      <created>1716338261791</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716338261791</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,7 +292,8 @@
     <MESSAGE value="got it running. but multiprocessing is not optimal yet" />
     <MESSAGE value="changed multiprocessing to multithreading" />
     <MESSAGE value="cleaned up" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned up" />
+    <MESSAGE value="pretty big refactor: interfaces define function types as Callables now" />
+    <option name="LAST_COMMIT_MESSAGE" value="pretty big refactor: interfaces define function types as Callables now" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -249,12 +301,17 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/data_gathering/src/web.py</url>
           <line>8</line>
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data_base/src/web.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/data_base/src/web.py</url>
           <line>12</line>
-          <option name="timeStamp" value="25" />
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

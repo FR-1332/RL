@@ -1,6 +1,6 @@
 from gym.core import ObsType, ActType
 from gym.spaces.space import T_cov, Space
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 State = tuple[float] | ObsType
 Action = T_cov
@@ -12,13 +12,20 @@ class Rewards(BaseModel):
     accumulated: list[Reward] = []
     last: list[Reward] = []
 
-    def perceive(self, reward: Reward):
+    def append(self, reward: Reward):
         self.last.append(reward)
-        self.accumulated.append(self.accumulated[-1] + reward if self.accumulated[-1] is not None else reward)
+        self.accumulated.append(self.accumulated[-1] + reward if len(self.accumulated) > 0 else reward)
 
 
 class History(BaseModel):
-    states: list[State] = []
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
     actions: list[Action] = []
-    is_terminal: list[bool] = []
-    rewards = Rewards()
+    rewards: Rewards = Rewards()
+    states: list[State] = []
+    is_alive: list[bool] = []
+
+    def append(self, reward: Reward, state: State, is_alive: bool):
+        self.rewards.append(reward)
+        self.states.append(state)
+        self.is_alive.append(is_alive)

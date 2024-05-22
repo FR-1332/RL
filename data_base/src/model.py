@@ -1,19 +1,28 @@
-from typing import List
+from pydantic import BaseModel, ConfigDict
 
-from pydantic import BaseModel
-
-
-class State(BaseModel):
-    state: List[float]
-    accumulated_reward: float
+State = tuple[float, ...]
+Action = int
+Reward = float
 
 
-class Transition(BaseModel):
-    from_state: State
-    actions: List[int]
-    rewards: List[float]
-    to_state: State
+class Rewards(BaseModel):
+    accumulated: list[Reward] = []
+    last: list[Reward] = []
+
+    def append(self, reward: Reward):
+        self.last.append(reward)
+        self.accumulated.append(self.accumulated[-1] + reward if len(self.accumulated) > 0 else reward)
 
 
 class History(BaseModel):
-    transitions: List[Transition]
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
+    actions: list[Action] = []
+    rewards: Rewards = Rewards()
+    states: list[State] = []
+    is_alive: list[bool] = []
+
+    def append(self, reward: Reward, state: State, is_alive: bool):
+        self.rewards.append(reward)
+        self.states.append(state)
+        self.is_alive.append(is_alive)

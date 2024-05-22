@@ -14,5 +14,5 @@ def save_one_history(json=Body(...)):
 
 
 @api.get("/api/get_one_history")
-def get_one_history(*weights: float) -> History:
-    return history_store.get_one_history(*weights)
+def get_one_history(*weights: float) -> str:
+    return history_store.get_one_history(*weights).model_dump_json()

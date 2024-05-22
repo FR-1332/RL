@@ -10,24 +10,21 @@ from model import History
 
 
 def get_one_history(agent: Agent, environment: Environment) -> History:
-    state = environment.sample_initial()
-    agent.perceive_state(state=state)
+    while environment.is_alive:
+        agent.perceive_and_memorize(environment.reward, environment.state, environment.is_alive)
 
-    while not environment.is_terminal:
-        action = agent.select_action()
+        agent.select_and_memorize_action()
 
-        reward, state = environment.sample_next(action)
-        agent.perceive_reward(reward=reward)
-        agent.perceive_state(state=state)
+        environment.sample_next(agent.action)
 
-    agent.memory.is_terminal.append(True)
+    agent.perceive_and_memorize(environment.reward, environment.state, environment.is_alive)
 
     return agent.memory
 
 
 def farm_and_save_loop():
     environment = OpenAIGym()
-    agent = Uniform(action_space=environment.get_action_space())
+    agent = Uniform(action_space=environment.action_space)
     asyncio.run(create_requests(agent, environment))
 
 
